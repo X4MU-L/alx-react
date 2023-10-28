@@ -4,7 +4,9 @@
 }
 
 #logo {
+  display: inline-block;
   width: 200px;
   height: 200px;
-  background: url("../holberton-logo.jpg") 200px/200px;
+  background-image: url("../assets/holberton-logo.jpg");
+  background-size: 200px 200px;
 }
