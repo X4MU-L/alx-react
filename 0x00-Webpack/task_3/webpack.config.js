@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -10,12 +11,13 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    static: "./public",
-    port: "8654",
+    contentBase: "./public",
+    port: 8564,
   },
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "public"),
+    clean: true,
   },
   module: {
     rules: [
@@ -33,5 +35,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Generated Html",
     }),
+    new CleanWebpackPlugin(),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
 };
