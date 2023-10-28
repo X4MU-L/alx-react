@@ -1,0 +1,10 @@
+#count {
+  float: left;
+  font-weight: bold;
+}
+
+#logo {
+  width: 200px;
+  height: 200px;
+  background: url("../holberton-logo.jpg") 200px/200px;
+}
