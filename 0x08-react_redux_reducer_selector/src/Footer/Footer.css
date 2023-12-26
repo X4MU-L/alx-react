@@ -1,0 +1,18 @@
+/* .App-footer {
+    color:black;
+    position: relative;
+    bottom: -4rem;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.1rem;
+    top: 3.5rem;
+  }
+  .App-header::after { /* Creates the second red border line with a pseudo element after the 'App-header' component 
+    content: "";
+    border-top: 3px solid #e0354b;
+    position: absolute;
+    top: 34rem;
+    width: 99%;
+     /* Adjust the height for the border thickness 
+     margin-top: 14%;
+  } */
