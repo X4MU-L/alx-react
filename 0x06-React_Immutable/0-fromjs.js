@@ -1,3 +1,3 @@
-import Immutable from './node_modules/immutable/dist/immutable.js';
+import { fromJS } from 'immutable';
 
 export const getImmutableObject = (obv) => Immutable.fromJS(obv);

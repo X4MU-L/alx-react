@@ -1,3 +1,5 @@
-import Immutable from './node_modules/immutable/dist/immutable.js';
+// import { Map } from 'immutable';
+import { Map } from 'immutable';
 
-export const getImmutableObject = (obv) => Immutable.Map(obv);
+// Convertss object into Immutable Map
+export const getImmutableObject = (object) => Map(object);
