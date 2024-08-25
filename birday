@@ -1,0 +1,195 @@
+#!/usr/bin/python3
+import time
+from time import sleep
+import sys
+import itertools
+import threading
+import os
+import emoji
+import getpass
+
+love=emoji.emojize("HAPPY BIRTHDAY :red_heart:")
+love1 = emoji.emojize(" :red_heart:")
+lok = emoji.emojize(":locked_with_key:")
+
+def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iterable    - Required  : iterable object (Iterable)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+        printEnd    - Optional  : end character (e.g. "\r", "\r\n") (Str)
+    """
+    nb = ['|', '/', '-', '\\']
+    
+    total = len(iterable)
+    # Progress Bar Printing Function
+    def printProgressBar (iteration):
+        percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+        filledLength = int(length * iteration // total)
+        bar = fill * filledLength + '#' * (length - filledLength)
+        print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
+        
+        # Initial Call
+    printProgressBar(0)
+    # Update Progress Bar
+    for i, item in enumerate(iterable):
+        
+        yield item
+        printProgressBar(i + 1)
+        # Print New Line on Complete
+    print()
+def runProgress(prefix, suffix, length):
+# A List of Items
+    items = list(range(0, length + 7))
+
+    # A Nicer, Single-Call Usage
+    for item in progressBar(items, prefix = prefix, suffix = suffix, length = length):
+        # Do stuff...
+        time.sleep(0.1)
+
+def break_prints(strings = "", end = "", sleep = 0.05):
+    for char in strings:
+        print(char, end=end)
+        sys.stdout.flush()
+        time.sleep(sleep)
+
+infos = []
+break_texts = ["Oh great...and I am great as well, shall we...✨","kindly wait while i process your key...", "Oh wait!!.....", " It's your birthday 🎉 today!!!", "loading...", "Signing in...",f"              I WISH YOU MANY MORE HAPPIEST OF BIRTHDAYS!  {love1}\n  ", f"            LIVE YOUR LIFE WITH SMILES, NOT TEARS. 🎇  🎉 {love1}"]
+questions = ["welcome...","how are you today?", "To continue please enter your first name", f"please enter secret key [{lok}]", "Your month of birth please", "Date?..(format:[dd])"]
+len_q = len (questions)
+for i, item in enumerate(questions):
+    
+    break_prints(item)
+    name = ""
+    if i != 3 and i != 0:
+        name = input(": ")
+    elif i == 3:
+        name = getpass.getpass(": ")
+    else:
+        time.sleep(1)
+        print()
+        continue
+    if i == 1:
+        break_prints(break_texts[0], sleep=0.05)
+        print()
+    if i == 3:
+        break_prints(break_texts[1], sleep=0.03)
+        runProgress(prefix="authenticating:", suffix="done", length=40)
+    infos.append(name)
+
+runProgress(prefix="analyzing:", suffix="done", length=50)
+
+break_prints(break_texts[2])
+time.sleep(1)
+break_prints(break_texts[3])
+time.sleep(1)
+print()
+
+runProgress(prefix="generating", suffix="done", length=50)
+break_prints(break_texts[4])
+sleep(5)
+
+print("")
+print("")
+print("")
+print("       😍                                                    *                            *   ")
+sleep(0.30)
+print(f'             *                 🎈           *                |               *        {love1}                              *                   ')
+sleep(0.30)
+print(f'                 🎈         *                 {love1}            |||          *                  *         🎈    * ')
+sleep(0.30)
+print('                                   *                       |||||                    *                                              * ')
+sleep(0.30)
+print(love                      ,'     *                     *             |||||||          *            ✨           🔥    * ')
+sleep(0.30)
+print('                 🎉         *                             $$$$$$$                 *   ')
+sleep(0.30)
+print('                                           *              |||||||                             🎈            ✨         * ',love1)
+sleep(0.45)
+print('                       *            *      🔥             $$$$$$$          *          ')
+sleep(0.45)
+print(love1,'                   *                               *   |||||||                       *    🎈   ')
+sleep(1)
+print(f'*       {love1}.                                               $$$$$$$               *     ')
+sleep(0.30)
+print('                                *  🎈                  *  $$$$$$$      *           🎈           *  ',love1)
+sleep(0.30)
+print('                                              *           |||||||                  *  ')
+sleep(0.30)
+print('               *     🎈                 |.🔥.🔥.🔥.🔥.🔥.🔥.🔥.🔥.🔥.🔥.🔥.🔥.🔥.🔥.|                                🎈')
+sleep(0.30)
+print('                        *               ||$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$||        *')
+print('                                        |||||||| WISH |||||||||||||||||||||||||||||||                 *  🔥 ')
+sleep(0.45)
+print('         *            👑                ||$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$||      *                                     * ')
+sleep(0.45)
+print('                       *                ||||||||||||| YOU |||||||||||||||||||||||||||            🎈  *')
+sleep(0.45)
+print('                                        ||$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$||       *                             *')
+sleep(0.45)
+print('                                        ||||||||||||||||| HAPPY |||||||||||||||||||||                         *')
+sleep(0.45)
+print('             *                          ||$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$||          *                     🎈      *')
+sleep(1)
+print('                                        ||||||||||||||||||||| BIRTHDAY ||||||||||||||       *',love1)
+sleep(0.45)
+print(love1,  '               *                     ||$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%$$$$$$$$||                         * ',love1)
+sleep(0.45)
+print(f'                                        ||||||||||||||| {infos[1]} |||||||||||||||||        *')
+sleep(1)
+print('                                        ||$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$||')
+sleep(1)
+print("")
+print("")
+def main():
+    a = 0  
+    for x in range (0,8):  
+        a = a + 1  
+        b = ("🎂 " + "  🎁  " * a)
+        # \r prints a carriage return first, so `b` is printed on top of the previous line.
+        sys.stdout.write('\r'+b)
+
+        time.sleep(0.5)
+main()
+sleep(1)
+main()
+print("")
+
+print("")
+sleep(2)
+break_prints(break_texts[6])
+sleep(1)
+break_prints(break_texts[7])
+sleep(2)
+print("")
+done = False
+#here is the animation
+
+# A List of Items
+
+def animate():
+    for c in itertools.cycle(['|', '/', '-', '\\']):
+        if done:
+            break
+        sys.stdout.write('\r🎂 ' + c)
+        sys.stdout.flush()
+        time.sleep(0.1)
+    print()
+    break_prints("\n\rLet\'s log you in codeworm\n\n\n")
+
+
+t = threading.Thread(target=animate)
+t.start()
+time.sleep(10)
+done = True
+sleep(5)
+break_prints(break_texts[5])
+sleep(5)
+print()
+os.system("source ~/.bashrc; bash")
+#print ("😍")
